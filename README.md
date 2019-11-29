@@ -1,4 +1,4 @@
-Background Grid React that is able to respond to match the viewport size. Working with basic triangle pattern  
+Background Grid React that is able to respond to match the viewport size. Working with basic triangle pattern
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
