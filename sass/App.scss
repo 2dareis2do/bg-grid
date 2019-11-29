@@ -1,0 +1,292 @@
+@function pow($number, $exponent) {
+  $value: 1;
+  @if $exponent>0 {
+    @for $i from 1 through $exponent {
+      $value: $value * $number;
+    }
+  }
+  @return $value;
+}
+
+@function sqrt($r) {
+  $x0: 1;
+  $x1: $x0;
+  @for $i from 1 through 10 {
+    $x1: $x0 - ($x0 * $x0 - abs($r)) / (2 * $x0);
+    $x0: $x1;
+  }
+  @return $x1;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+}
+
+.App-header {
+  // background-color: #282c34;
+  z-index: 1;
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #09d3ac;
+}
+
+$size: 75;
+// $hypotenuse: $size / sin(60deg); // need to specify degrees to return deg not radians
+$width: round(sqrt(pow($size / sin(60deg), 2) - pow($size, 2)));
+.test {
+  // height: #{$hypotenuse}px;
+  width: #{$width}px;
+}
+
+body {
+  // padding: 50px 30px;
+  margin: 0;
+}
+
+main {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.row {
+  // display: flex;
+  // align-items: center;
+  // justify-content: center;
+  // margin: 0 #{$width * -2}px;
+  margin: 0 auto;
+  >* {
+    margin: 0 0px;
+  }
+}
+
+// .row--even {
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   >* {
+//     margin: 0 0px;
+//   }
+// }
+.space {
+  padding-bottom: 30px;
+}
+
+.title {
+  text-transform: uppercase;
+  font-size: 1rem;
+  color: rgba(0, 0, 0, 0.3);
+  text-align: center;
+  font-weight: 400;
+  margin: 0;
+}
+
+.triangle {
+  // width: #{$size / 1.75}px;
+  width: #{$width}px;
+  height: #{$size }px;
+  position: relative;
+  float: left;
+  overflow: hidden;
+  &::before {
+    content: '';
+    display: block;
+    width: 300%;
+    height: 150%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: black;
+    transform: rotate(30deg) scale(1) translateX(-0px);
+    transform-origin: 0 100%;
+    box-shadow: 0 0 0 100% white
+  }
+  &.invert,
+  &.arrow-invert {
+    &::before {
+      background: white;
+      box-shadow: 0 0 0 500px black;
+    }
+  }
+}
+
+.triangle--right {
+  width: #{$width}px;
+  height: #{$size}px;
+  position: relative;
+  float: left;
+  overflow: hidden;
+  &::before {
+    content: '';
+    display: block;
+    width: #{$size * 2}px;
+    height: #{$size * 2}px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform-origin: 0 0;
+    background: white;
+    box-shadow: 0 0 0 500px black;
+    // transform: rotate(135deg) scale(-1, 1) translateX(-100%);
+    // transform:    rotate(45deg) scale(1, -1) translateX(6%) translateY(-36%);
+    transform: rotate(60deg) scale(1, -1) translateX(6%) translateY(-25%);
+  }
+  &.invert {
+    &::before {
+      background: black;
+      box-shadow: 0 0 0 500px white;
+    }
+  }
+}
+
+.triangle--convex {
+  // width: #{$size}px;
+  width: #{$width}px;
+  height: #{$size}px;
+  position: relative;
+  overflow: hidden;
+  &::before {
+    content: '';
+    display: block;
+    width: 600%;
+    height: 300%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: black;
+    border-top-left-radius: 100% 100%;
+    border-bottom-left-radius: 100% 100%;
+    border-bottom-right-radius: 10% 100%;
+    border-top-right-radius: 10% 100%;
+    // transform: rotate(45deg) scale(1) translateX(-4px);
+    // transform:    rotate(30deg) scale(1) translateX(-6%) translateY(26%);
+    transform: rotate(30deg) scale(1) translateX(-4%) translateY(30%);
+    transform-origin: 0 100%;
+    box-shadow: 0 0 0 500px white
+  }
+  &.invert {
+    &::before {
+      background: white;
+      box-shadow: 0 0 0 500px black;
+    }
+  }
+}
+
+.triangle--concave {
+  // width: #{$size}px;
+  width: #{$width}px;
+  height: #{$size}px;
+  position: relative;
+  overflow: hidden;
+  &::before {
+    content: '';
+    display: block;
+    width: 600%;
+    height: 300%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform-origin: 0 100%;
+    border-top-left-radius: 50% 100%;
+    border-bottom-left-radius: 50% 100%;
+    border-bottom-right-radius: 100% 100%;
+    border-top-right-radius: 100% 100%;
+    background: white;
+    box-shadow: 0 0 0 500px black;
+    //  transform: rotate(45deg) scale(1) translateX(0px) translateY(50%) translateX(-50%);
+    // transform: rotate(45deg) scale(1) translateX(0px) translateY(25%) translateX(-97%);
+    // transform: rotate(45deg) scale(1) translateX(0px) translateY(26%) translateX(-94%);
+    transform: rotate(45deg) scale(1) translateX(0px) translateY(42%) translateX(-100%);
+  }
+  &.invert,
+  &.arrow-invert {
+    &::before {
+      background: black;
+      box-shadow: 0 0 0 500px white;
+    }
+  }
+}
+
+.triangle--space {
+  width: #{$width}px;
+  height: #{$size}px;
+  float: left;
+  position: relative;
+  overflow: hidden;
+}
+
+.triangle--double-space {
+  width: #{$width * 2}px;
+  height: #{$size}px;
+  float: left;
+  position: relative;
+  overflow: hidden;
+}
+
+// .arrow-right {
+//   width: #{$size}px;
+//   height: #{$size}px;
+//   position: relative;
+//   overflow: hidden;
+//   &::before {
+//     content: '';
+//     display: block;
+//     width: #{$size / 1.41}px;
+//     height: #{$size / 1.41}px;
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     background: #e888a3;
+//     transform: rotate(45deg);
+//     transform-origin: 0 0;
+//   }
+// }
+// .arrow-left {
+//   width: #{$size}px;
+//   height: #{$size}px;
+//   position: relative;
+//   overflow: hidden;
+//   &::before {
+//     content: '';
+//     display: block;
+//     width: #{$size / 1.41}px;
+//     height: #{$size / 1.41}px;
+//     position: absolute;
+//     top: 0;
+//     right: 0;
+//     background: #8de698;
+//     transform: rotate(-45deg);
+//     transform-origin: 100% 0;
+//   }
+// }
+// Formats
+.arrow-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 30px 0 0;
+  >* {
+    margin: 0 0px;
+  }
+}
+
+.container {
+  // width: #{($size / 1.75) * 12}px;
+  // margin: 0 auto;
+  overflow: hidden;
+  // overflow: hidden;
+}
