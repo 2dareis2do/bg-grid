@@ -11,6 +11,10 @@ function App() {
         className = "App-logo"
         alt = "logo" />
         <h1>Responsive Background Grid</h1>
+        <h1>Responsive Background Grid 2</h1>
+        <h1>Responsive Background Grid 3</h1>
+        <h1>Responsive Background Grid 4</h1>
+
         {/* <a className = "App-link" href = "https://reactjs.org"
         target = "_blank" rel = "noopener noreferrer" >Learn React yeah yeah</a> */}
       </header>
