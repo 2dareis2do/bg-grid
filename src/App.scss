@@ -1,3 +1,103 @@
+// @import "compass/reset";
+@use 'sass:math';
+
+@function pow($number, $exponent) {
+  $value: 1;
+
+  @if $exponent>0 {
+    @for $i from 1 through $exponent {
+      $value: $value * $number;
+    }
+  }
+
+  @return $value;
+}
+
+@function sqrt($r) {
+  $x0: 1;
+  $x1: $x0;
+
+  @for $i from 1 through 10 {
+    $x1: $x0 - math.div(($x0 * $x0 - abs($r)) , (2 * $x0));
+    $x0: $x1;
+  }
+
+  @return $x1;
+}
+
+// .App {
+//   text-align: center;
+// }
+
+// .App-logo {
+//   height: 40vmin;
+// }
+
+// .App-header {
+//   // background-color: #282c34;
+//   z-index: 1;
+//   position: relative;
+//   min-height: 100vh;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   justify-content: center;
+//   font-size: calc(10px + 2vmin);
+//   color: white;
+// }
+
+// .App-link {
+//   color: #09d3ac;
+// }
+
+$size: 75;
+// $hypotenuse: math.div($size , sqrt(25));
+$sizesquare: $size * $size;
+$hypotenuse: math.div($size , math.sin(60deg)); // need to specify degrees to return deg not radians
+// $width: round(sqrt(pow(math.div($size , math.sin(60deg)), 2) - pow($size, 2)));
+
+$width: round(sqrt(pow(math.div($size , math.sin(60deg)), 2) - pow($size, 2)));
+
+.test {
+  // height: #{$hypotenuse}px;
+  width: #{$width}px;
+}
+
+// .test {
+//   // height: #{$hypotenuse}px;
+//   width: #{$width}px;
+// }
+
+// body {
+//   // padding: 50px 30px;
+//   margin: 0;
+// }
+
+h1 {
+  font-size: 5vw;
+  background: black;
+}
+
+main {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.space {
+  padding-bottom: 30px;
+}
+
+.title {
+  text-transform: uppercase;
+  font-size: 1rem;
+  color: rgba(0, 0, 0, 0.3);
+  text-align: center;
+  font-weight: 400;
+  margin: 0;
+}
+
 .App {
   text-align: center;
 }
@@ -7,7 +107,9 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  // background-color: #282c34;
+  position: relative;
+  z-index: 1;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -21,26 +123,21 @@
   color: #09d3ac;
 }
 
-$size: 75;
-$hypotenuse: $size / sqrt(25);
-$sizesquare: $size * $size;
-// $hypotenusesquare: $hypotenuse * $hypotenuse;
-// $width: sqrt(($hypotenuse * $hypotenuse) + ($size * $size));
-// $width: sqrt(($hypotenuse * $hypotenuse) + ($size * $size));
 body {
   // padding: 50px 30px;
   margin: 0;
 }
 
-.test {
-  width: #{$hypotenuse}px;
-}
+// .test {
+//   width: #{$hypotenuse}px;
+// }
 
 .row {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 #{$size * -1}px;
+  // display: flex;
+  // align-items: center;
+  // justify-content: center;
+  margin: 0 auto;
+  // margin: 0 #{$size * -1}px;
   >* {
     margin: 0 0px;
   }
@@ -69,9 +166,10 @@ body {
 }
 
 .triangle {
-  width: #{$size / 1.75}px;
+  width: #{math.div($size , 1.75)}px;
   height: #{$size }px;
   position: relative;
+  float: left;
   overflow: hidden;
   &::before {
     content: '';
@@ -97,7 +195,7 @@ body {
 
 .triangle--convex {
   // width: #{$size}px;
-  width: #{$size / 1.75}px;
+  width: #{math.div($size , 1.75)}px;
   height: #{$size}px;
   position: relative;
   overflow: hidden;
@@ -130,9 +228,10 @@ body {
 
 .triangle--concave {
   // width: #{$size}px;
-  width: #{$size / 1.75}px;
+  width: #{math.div($size , 1.75)}px;
   height: #{$size}px;
   position: relative;
+  float: left;
   overflow: hidden;
   &::before {
     content: '';
@@ -164,9 +263,10 @@ body {
 }
 
 .triangle--right {
-  width: #{$size / 1.75}px;
+  width: #{math.div($size , 1.75)}px;
   height: #{$size}px;
   position: relative;
+  float: left;
   overflow: hidden;
   &::before {
     content: '';
@@ -192,63 +292,63 @@ body {
 }
 
 .triangle--space {
-  width: #{$size / 1.75}px;
+  width: #{math.div($size , 1.75)}px;
   height: #{$size}px;
   position: relative;
   overflow: hidden;
 }
 
-.arrow-right {
-  width: #{$size}px;
-  height: #{$size}px;
-  position: relative;
-  overflow: hidden;
-  &::before {
-    content: '';
-    display: block;
-    width: #{$size / 1.41}px;
-    height: #{$size / 1.41}px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: #e888a3;
-    transform: rotate(45deg);
-    transform-origin: 0 0;
-  }
-}
+// .arrow-right {
+//   width: #{$size}px;
+//   height: #{$size}px;
+//   position: relative;
+//   overflow: hidden;
+//   &::before {
+//     content: '';
+//     display: block;
+//     width: #{math.div($size , 1.41)}px;
+//     height: #{math.div($size , 1.41)}px;
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     background: #e888a3;
+//     transform: rotate(45deg);
+//     transform-origin: 0 0;
+//   }
+// }
 
-.arrow-left {
-  width: #{$size}px;
-  height: #{$size}px;
-  position: relative;
-  overflow: hidden;
-  &::before {
-    content: '';
-    display: block;
-    width: #{$size / 1.41}px;
-    height: #{$size / 1.41}px;
-    position: absolute;
-    top: 0;
-    right: 0;
-    background: #8de698;
-    transform: rotate(-45deg);
-    transform-origin: 100% 0;
-  }
-}
+// .arrow-left {
+//   width: #{$size}px;
+//   height: #{$size}px;
+//   position: relative;
+//   overflow: hidden;
+//   &::before {
+//     content: '';
+//     display: block;
+//     width: #{math.div($size , 1.41)}px;
+//     height: #{math.div($size , 1.41)}px;
+//     position: absolute;
+//     top: 0;
+//     right: 0;
+//     background: #8de698;
+//     transform: rotate(-45deg);
+//     transform-origin: 100% 0;
+//   }
+// }
 
 // Formats
-.arrow-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 30px 0 0;
-  >* {
-    margin: 0 0px;
-  }
-}
+// .arrow-wrapper {
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   margin: 30px 0 0;
+//   >* {
+//     margin: 0 0px;
+//   }
+// }
 
 .container {
-  width: #{($size / 1.75) * 12}px;
+  // width: #{math.div($size , 1.75) * 12}px;
   margin: 0 auto;
   overflow: hidden;
 }

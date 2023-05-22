@@ -45,7 +45,7 @@
 
 $size: 75;
 // $hypotenuse: $size / sin(60deg); // need to specify degrees to return deg not radians
-$width: round(sqrt(pow($size / sin(60deg), 2) - pow($size, 2)));
+$width: round(sqrt(pow($size / Math.sin(60deg), 2) - pow($size, 2)));
 .test {
   // height: #{$hypotenuse}px;
   width: #{$width}px;
@@ -73,6 +73,7 @@ main {
   // align-items: center;
   // justify-content: center;
   // margin: 0 #{$width * -2}px;
+  // margin: 0 auto;
   margin: 0 auto;
   >* {
     margin: 0 0px;

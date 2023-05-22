@@ -1,43 +1,22 @@
-.test {
-  width: 43px;
-}
-
-h1 {
-  font-size: 5vw;
-  background: black;
-}
-
-main {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-}
-
-.space {
-  padding-bottom: 30px;
-}
-
-.title {
-  text-transform: uppercase;
-  font-size: 1rem;
-  color: rgba(0, 0, 0, 0.3);
-  text-align: center;
-  font-weight: 400;
-  margin: 0;
-}
+/* line 21, ../sass/App.scss */
 
 .App {
   text-align: center;
 }
 
+
+/* line 25, ../sass/App.scss */
+
 .App-logo {
   height: 40vmin;
 }
 
+
+/* line 29, ../sass/App.scss */
+
 .App-header {
-  position: relative;
   z-index: 1;
+  position: relative;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -47,33 +26,68 @@ main {
   color: white;
 }
 
+
+/* line 42, ../sass/App.scss */
+
 .App-link {
   color: #09d3ac;
 }
+
+
+/* line 49, ../sass/App.scss */
+
+.test {
+  width: 43px;
+}
+
+
+/* line 54, ../sass/App.scss */
 
 body {
   margin: 0;
 }
 
+
+/* line 59, ../sass/App.scss */
+
+h1 {
+  font-size: 5vw;
+  background: black;
+}
+
+
+/* line 64, ../sass/App.scss */
+
+main {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+
+/* line 71, ../sass/App.scss */
+
 .row {
   margin: 0 auto;
 }
-.row > * {
+
+
+/* line 77, ../sass/App.scss */
+
+.row>* {
   margin: 0 0px;
 }
 
-.row--even {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.row--even > * {
-  margin: 0 0px;
-}
+
+/* line 90, ../sass/App.scss */
 
 .space {
   padding-bottom: 30px;
 }
+
+
+/* line 94, ../sass/App.scss */
 
 .title {
   text-transform: uppercase;
@@ -84,15 +98,22 @@ body {
   margin: 0;
 }
 
+
+/* line 103, ../sass/App.scss */
+
 .triangle {
-  width: 42.8571428571px;
+  width: 43px;
   height: 75px;
   position: relative;
   float: left;
   overflow: hidden;
 }
+
+
+/* line 110, ../sass/App.scss */
+
 .triangle::before {
-  content: "";
+  content: '';
   display: block;
   width: 300%;
   height: 150%;
@@ -104,19 +125,67 @@ body {
   transform-origin: 0 100%;
   box-shadow: 0 0 0 100% white;
 }
-.triangle.invert::before, .triangle.arrow-invert::before {
+
+
+/* line 125, ../sass/App.scss */
+
+.triangle.invert::before,
+.triangle.arrow-invert::before {
   background: white;
   box-shadow: 0 0 0 500px black;
 }
 
+
+/* line 132, ../sass/App.scss */
+
+.triangle--right {
+  width: 43px;
+  height: 75px;
+  position: relative;
+  float: left;
+  overflow: hidden;
+}
+
+
+/* line 138, ../sass/App.scss */
+
+.triangle--right::before {
+  content: '';
+  display: block;
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transform-origin: 0 0;
+  background: white;
+  box-shadow: 0 0 0 500px black;
+  transform: rotate(60deg) scale(1, -1) translateX(6%) translateY(-25%);
+}
+
+
+/* line 154, ../sass/App.scss */
+
+.triangle--right.invert::before {
+  background: black;
+  box-shadow: 0 0 0 500px white;
+}
+
+
+/* line 161, ../sass/App.scss */
+
 .triangle--convex {
-  width: 42.8571428571px;
+  width: 43px;
   height: 75px;
   position: relative;
   overflow: hidden;
 }
+
+
+/* line 167, ../sass/App.scss */
+
 .triangle--convex::before {
-  content: "";
+  content: '';
   display: block;
   width: 600%;
   height: 300%;
@@ -132,20 +201,30 @@ body {
   transform-origin: 0 100%;
   box-shadow: 0 0 0 500px white;
 }
+
+
+/* line 187, ../sass/App.scss */
+
 .triangle--convex.invert::before {
   background: white;
   box-shadow: 0 0 0 500px black;
 }
 
+
+/* line 194, ../sass/App.scss */
+
 .triangle--concave {
-  width: 42.8571428571px;
+  width: 43px;
   height: 75px;
   position: relative;
-  float: left;
   overflow: hidden;
 }
+
+
+/* line 200, ../sass/App.scss */
+
 .triangle--concave::before {
-  content: "";
+  content: '';
   display: block;
   width: 600%;
   height: 300%;
@@ -161,46 +240,58 @@ body {
   box-shadow: 0 0 0 500px black;
   transform: rotate(45deg) scale(1) translateX(0px) translateY(42%) translateX(-100%);
 }
-.triangle--concave.invert::before, .triangle--concave.arrow-invert::before {
+
+
+/* line 222, ../sass/App.scss */
+
+.triangle--concave.invert::before,
+.triangle--concave.arrow-invert::before {
   background: black;
   box-shadow: 0 0 0 500px white;
 }
 
-.triangle--right {
-  width: 42.8571428571px;
-  height: 75px;
-  position: relative;
-  float: left;
-  overflow: hidden;
-}
-.triangle--right::before {
-  content: "";
-  display: block;
-  width: 150px;
-  height: 150px;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  transform-origin: 0 0;
-  background: white;
-  box-shadow: 0 0 0 500px black;
-  transform: rotate(60deg) scale(1, -1) translateX(6%) translateY(-25%);
-}
-.triangle--right.invert::before {
-  background: black;
-  box-shadow: 0 0 0 500px white;
-}
+
+/* line 229, ../sass/App.scss */
 
 .triangle--space {
-  width: 42.8571428571px;
+  width: 43px;
   height: 75px;
+  float: left;
   position: relative;
   overflow: hidden;
 }
 
-.container {
-  margin: 0 auto;
+
+/* line 237, ../sass/App.scss */
+
+.triangle--double-space {
+  width: 86px;
+  height: 75px;
+  float: left;
+  position: relative;
   overflow: hidden;
 }
 
-/*# sourceMappingURL=App.css.map */
+
+/* line 282, ../sass/App.scss */
+
+.arrow-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 30px 0 0;
+}
+
+
+/* line 287, ../sass/App.scss */
+
+.arrow-wrapper>* {
+  margin: 0 0px;
+}
+
+
+/* line 292, ../sass/App.scss */
+
+.container {
+  overflow: hidden;
+}

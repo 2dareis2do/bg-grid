@@ -1,16 +1,16 @@
 {
   "name": "bg-grid",
-  "version": "0.1.0",
+  "homepage": ".",
+  "version": "0.2.0",
   "private": true,
   "dependencies": {
-    "node-sass-chokidar": "^1.4.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "react-scripts": "3.2.0"
+    "react-scripts": "3.2.0",
+    "sass": "^1.62.1"
   },
   "scripts": {
-    "build-css": "node-sass-chokidar src/ -o src/",
-    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
+    "scss-compile": "sass src/App.scss src/App.css",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

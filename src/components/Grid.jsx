@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import TriangleEquilateral from './molecules/TriangleEquilateral';
-import TriangleDoubleSpace from './molecules/TriangleDoubleSpace';
-import TriangleSpace from './atoms/TriangleSpace';
+// import TriangleDoubleSpace from './molecules/TriangleDoubleSpace';
+// import TriangleSpace from './atoms/TriangleSpace';
 import Triangle from './atoms/Triangle';
 import TriangleRight from './atoms/TriangleRight';
 
@@ -76,7 +76,7 @@ class Grid extends Component {
   makeGrid(){
     let temp = [];
     let count = (this.state.columns * this.state.rows) ;
-    let count3 = this.state.columns;
+    // let count3 = this.state.columns;
     let count2 = 0;
 
         // lets handle odd and even columns differently
@@ -85,7 +85,7 @@ class Grid extends Component {
       if(this.state.columns % 2 === 0) {
 
         for(let i=0; i<count ; i++) {
-          console.log(i);
+          // console.log(i);
 
           // console.log(count2)
           // skip first row
@@ -113,11 +113,11 @@ class Grid extends Component {
           //target first column
           if( i === 0) {
             temp.push(<TriangleEquilateral key={i.toString()+'2'}></TriangleEquilateral>)
-            console.log('first item', i)
+            // console.log('first item', i)
 
           }
           else if (i === count - 1){
-            console.log('last item', i)
+            // console.log('last item', i)
             //check if even or odd amount of rows
             if(this.state.rows % 2 === 0 ) {
               temp.push(<Triangle key={i.toString()}></Triangle>)
@@ -130,7 +130,7 @@ class Grid extends Component {
             // count skips row
             if (count2 % 2 === 0) {
               // count2 = count2 + 1;
-              console.log('add triangle right');
+              // console.log('add triangle right');
 
               temp.push(<TriangleRight key={i.toString()}></TriangleRight>)
 
@@ -167,21 +167,21 @@ class Grid extends Component {
       } else {
         //odd
         for(let i=0; i<count ; i++) {
-          console.log(' item', i, count)
+          // console.log(' item', i, count)
 
         // console.log('count2',count2 )
         if(i % 2 === 0 && i !== count -1 ) {
           temp.push(<TriangleEquilateral key={i.toString()}></TriangleEquilateral>)
         }
         else if (i === count - 1){
-          console.log('last item', i, count)
+          // console.log('last item', i, count)
           //check if even or odd amount of rows
           if(this.state.rows % 2 === 1 ) {
-            console.log('odd rows')
+            // console.log('odd rows')
             temp.push(<Triangle key={i.toString()}></Triangle>)
 
           } else {
-            console.log('even rows')
+            // console.log('even rows')
 
           }
         }
